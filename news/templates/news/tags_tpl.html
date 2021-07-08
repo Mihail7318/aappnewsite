@@ -1,0 +1,9 @@
+<div class="tags">
+    <div class="l_w_title">
+        <h3><ya-tr-span data-index="57-0" data-value="Categories" data-translation="Категории" data-type="trSpan">Тэги</ya-tr-span></h3>
+    </div>
+    {% for tag in tags %}
+    <button type="button" class="btn btn-outline-danger" style="margin:2px;"> <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a></button>
+    {% endfor %}
+</div>
+<br>

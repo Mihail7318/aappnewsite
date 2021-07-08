@@ -1,0 +1,122 @@
+{% load static%}
+
+    <body>
+        <!--================Top Header Area =================-->
+        {% include 'base/header.html' %}
+        <!--================Boot Area =================-->
+
+        {% block body %}
+        <!--================Categories Banner Area =================-->
+        <section class="solid_banner_area">
+            <div class="container">
+                <div class="solid_banner_inner">
+                    <h3>{{ category.name}}</h3>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/news/">Блог</a></li>
+                        <li><a href="">{{ category.name }}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!--================End Categories Banner Area =================-->
+
+
+
+<!--================Categories Product Area =================-->
+        <section class="categories_product_main p_80">
+            <div class="container">
+                <div class="categories_main_inner">
+                    <div class="row row_disable">
+                        <div class="col-lg-9 float-md-right">
+
+							<div class="c_product_grid_details">
+                                {% for item in news %}
+                                <div class="c_product_item">
+                                    <div class="row">
+                                            <div class="c_product_text">
+                                                <h3><a href="{% url 'view_news' item.pk %}">{{ item.title }}</a></h3>
+                                                        {{ item.content|truncatechars:355|safe|linebreaks }}
+                                                <h6><a href="{% url 'view_news' item.pk %}"><span>Далее</span></a></h6>
+                                                        <br><br>
+                                                <div class="blog-info float-left">
+                                                    <span class="author-name">
+                                                        <i class="fa fa-angle-right"></i>
+                                                        <a href="#"> {{ item.category }}</a>
+                                                    </span>
+                                                    <span class="categories">
+                                                        <i class="fa fa-tag"></i>
+                                                        <a href="#">{{ item.variety }}</a>
+                                                    </span>
+                                                    <span class="comments-number">
+                                                        <i class="fa fa-comment"></i>
+                                                        <a href="#">0 Comment</a>
+                                                    </span>
+                                                </div>
+                                                    <div class="float-right"> <h6> Дата: <span> {{ item.created_at|date:"Y-m-d" }}</span></h6> </div>
+                                            </div>
+
+                                    </div>
+                                </div>
+                                 {% endfor %}
+		<!--================Paginations Product Area =================-->
+                                <nav aria-label="Page navigation example" class="pagination_area">
+                                  <ul class="pagination">
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">6</a></li>
+                                    <li class="page-item next"><a class="page-link" href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                                  </ul>
+                                </nav>
+		<!--================Paginations Product Area =================-->
+                            </div>
+                        </div>
+                        <div class="col-lg-3 float-md-right">
+                            <div class="categories_sidebar">
+                                <aside class="l_widgest l_p_categories_widget">
+                                    <div class="l_w_title">
+                                        <h3>Категории</h3>
+                                    </div>
+                                    <ul class="navbar-nav">
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Women’s Fashion
+                                            <i class="icon_plus" aria-hidden="true"></i>
+                                            <i class="icon_minus-06" aria-hidden="true"></i>
+                                            </a>
+                                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <li class="nav-item"><a class="nav-link" href="#">Hoodies & Sweatshirts</a></li>
+                                                <li class="nav-item"><a class="nav-link" href="#">Jackets & Coats</a></li>
+                                                <li class="nav-item"><a class="nav-link" href="#">Blouses & Shirts</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                {% for item in categories %}
+
+                                    <ul class="navbar-nav">
+                                        <li class="nav-item dropdown">
+                                            <li class="nav-item"><a class="nav-link" href="{% url 'newscategory' item.pk %}">{{ item.name }}</a></li>
+                                        </li>
+                                    </ul>
+                                {% endfor %}
+                                </aside>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================End Categories Product Area =================-->
+        {% endblock %}
+
+        <!--================Footer Area =================-->
+        {% include 'base/footer.html' %}
+    </body>
+</html>
+
+</body>
+</html>
