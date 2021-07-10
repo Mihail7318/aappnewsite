@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'sovet.apps.SovetConfig',
     'cust.apps.CustConfig',
 
+    'debug_toolbar',
     'mptt',
     'ckeditor',
     'smart_selects',
@@ -61,6 +62,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+
 ]
 
 ROOT_URLCONF = 'aappnewsite.urls'
