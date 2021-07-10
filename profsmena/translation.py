@@ -1,10 +1,10 @@
 from modeltranslation.translator import register, TranslationOptions
-from .models import Category, Profsmena
+from .models import Category, Smena
 
 @register(Category)
 class CategoryTranslationOptions(TranslationOptions):
     fields = ('name',)
 
-@register(Profsmena)
-class PostTranslationOptions(TranslationOptions):
+@register(Smena)
+class SmenaTranslationOptions(TranslationOptions):
     fields = ('title', 'content')

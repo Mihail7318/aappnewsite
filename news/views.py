@@ -6,7 +6,7 @@ from django.db.models import F
 
 class Home(ListView) :
     model = Post
-    template_name = 'news/news.html'
+    template_name = 'news/profsmena.html'
     context_object_name = 'posts'
     paginate_by = 2
 
@@ -17,7 +17,7 @@ class Home(ListView) :
 
 
 class PostsByCategory(ListView):
-    template_name = 'news/news_category.html'
+    template_name = 'news/profsmena_category.html'
     context_object_name = 'posts'
     paginate_by = 4
     allow_empty = False
@@ -49,7 +49,7 @@ class PostsByTag(ListView):
 
 class GetPost(DetailView):
     model = Post
-    template_name = 'news/newsdetails.html'
+    template_name = 'news/profsmenadetails.html'
     context_object_name = 'post'
 
     def get_context_data(self, *, object_list=None, **kwargs):

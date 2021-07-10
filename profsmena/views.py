@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from .models import Profsmena, Category
+from .models import Smena, Category
 from django.db.models import F
 
 
 class Home(ListView) :
-    model = Profsmena
+    model = Smena
     template_name = 'profsmen/profsmena.html'
     context_object_name = 'posts'
     paginate_by = 2
@@ -16,14 +16,14 @@ class Home(ListView) :
         return context
 
 
-class ProfsmenasByCategory(ListView):
+class PostsByCategory(ListView):
     template_name = 'profsmen/profsmena_category.html'
     context_object_name = 'posts'
     paginate_by = 4
     allow_empty = False
 
     def get_queryset(self):
-        return Profsmena.objects.filter(category__slug=self.kwargs['slug'])
+        return Smena.objects.filter(category__slug=self.kwargs['slug'])
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -31,9 +31,10 @@ class ProfsmenasByCategory(ListView):
         return context
 
 
-class GetProfsmena(DetailView):
-    model = Profsmena
-    template_name = 'profsmen/profsmendetails.html'
+
+class GetPost(DetailView):
+    model = Smena
+    template_name = 'profsmen/profsmenadetails.html'
     context_object_name = 'post'
 
     def get_context_data(self, *, object_list=None, **kwargs):

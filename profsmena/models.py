@@ -23,17 +23,18 @@ class Category(MPTTModel):
         verbose_name = 'Рубрика'
         verbose_name_plural = 'Рубрики'
 
-class Profsmena(models.Model):
+
+class Smena(models.Model):
 
     STATUS_NEWS = (
         ('Publish', 'Опубликовать'),
         ('Not_to_publish', 'Не публиковать'),
     )
 
-    status = models.CharField(default='Publish', max_length=30, choices=STATUS_NEWS, verbose_name='Статус')
+    status = models.CharField(default='P',max_length=30, choices=STATUS_NEWS, verbose_name='Статус')
+    title = models.CharField(max_length=255, db_index=True, verbose_name='Наименование')
     start = models.DateTimeField(null=True, blank=True, verbose_name='Начало')
     end = models.DateTimeField(null=True, blank=True, verbose_name='Окончание')
-    title = models.CharField(max_length=255, db_index=True, verbose_name='Наименование')
     slug = models.SlugField(unique=True, verbose_name='Ссылка')
     content = RichTextUploadingField(blank=True, verbose_name='Описание')
     category = TreeForeignKey('Category', verbose_name='Рубрики', on_delete=models.CASCADE, null=True, blank=True, db_index=True)
@@ -46,10 +47,9 @@ class Profsmena(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('profsmena', kwargs={"slug": self.slug})
+        return reverse('post', kwargs={"slug": self.slug})
 
     class Meta:
         verbose_name = 'Профильная смена'
-        verbose_name_plural = 'Профильные смены'
+        verbose_name_plural = 'Профильная смена'
         ordering = ['-created_at']
-

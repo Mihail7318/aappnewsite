@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home.apps.HomeConfig',
     'news.apps.NewsConfig',
-    'profsmen.apps.ProfsmenConfig',
+    'profsmena.apps.ProfsmenaConfig',
     'konkurs.apps.KonkursConfig',
     'sovet.apps.SovetConfig',
     'cust.apps.CustConfig',
@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'aappnewsite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str(BASE_DIR / 'db.sqlite3'),
     }
 }
 

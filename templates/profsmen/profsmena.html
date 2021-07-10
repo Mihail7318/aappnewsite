@@ -37,13 +37,13 @@
                         <div class="col-lg-9 float-md-right">
 
 							<div class="c_product_grid_details">
-                                {% for post in posts %}
+                                {% for smena in posts %}
                                 <div class="c_product_item">
                                     <div class="row">
                                             <div class="c_product_text">
-                                                <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                                                <h3><a href="{{ post.get_absolute_url }}">{{ smena.title }}</a></h3>
                                                         {{ post.content|truncatewords_html:20|safe }}
-                                                <h6><a href="{{ post.get_absolute_url }}"><span>Далее</span></a></h6>
+                                                <h6><a href="{{ smena.get_absolute_url }}"><span>Далее</span></a></h6>
                                                         <br><br>
                                                 <div class="blog-info float-left">
                                                     <span class="author-name">
@@ -64,7 +64,7 @@
                                                         <a href="#">0 Comment</a>
                                                     </span>
                                                 </div>
-                                                    <div class="float-right"> <h6> Дата: <span> {{ post.created_at|date:"j F Y" }}</span></h6> </div>
+                                                    <div class="float-right"> <h6> Дата: <span> {{ smena.created_at|date:"j F Y" }}</span></h6> </div>
                                             </div>
 
                                     </div>
