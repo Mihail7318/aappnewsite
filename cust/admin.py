@@ -1,12 +1,26 @@
 from django.contrib import admin
+from django import forms
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django.utils.safestring import mark_safe
+from modeltranslation.admin import TranslationAdmin
 
 # Register your models here.
 from cust.models import Standartpages, Partner, Faq, Document
 
+
+
+
+class StandartpagesAdminForm(forms.ModelForm):
+    """Форма с виджетом ckeditor"""
+    content_ru = forms.CharField(label="Описание", widget=CKEditorUploadingWidget())
+    content_en = forms.CharField(label="Описание", widget=CKEditorUploadingWidget())
+
+    class Meta:
+        model = Standartpages
+        fields = '__all__'
+
 @admin.register(Standartpages)
-class StandartpagesAdmin(admin.ModelAdmin):
+class StandartpagesAdmin(TranslationAdmin):
     save_on_top = True
     def has_add_permission(self, request):
         num_objects = self.model.objects.count()
@@ -16,7 +30,7 @@ class StandartpagesAdmin(admin.ModelAdmin):
             return True
 
 @admin.register(Faq)
-class FaqAdmin(admin.ModelAdmin):
+class FaqAdmin(TranslationAdmin):
     save_on_top = True
 
 

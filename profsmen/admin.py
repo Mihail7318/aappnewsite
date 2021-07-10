@@ -1,12 +1,25 @@
 from django.contrib import admin
+from django import forms
 from django.utils.safestring import mark_safe
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
+
 from mptt.admin import DraggableMPTTAdmin
+from modeltranslation.admin import TranslationAdmin
 
 from .models import *
 
+class PostAdminForm(forms.ModelForm):
+    """Форма с виджетом ckeditor"""
+    content_ru = forms.CharField(label="Описание", widget=CKEditorUploadingWidget())
+    content_en = forms.CharField(label="Описание", widget=CKEditorUploadingWidget())
 
-@admin.register(Post)
-class PostAdmin(admin.ModelAdmin):
+    class Meta:
+        model = Profsmena
+        fields = '__all__'
+
+
+@admin.register(Profsmena)
+class ProfsmenaAdmin(TranslationAdmin):
     list_display = ('id', 'title', 'category', 'created_at',  'views',)
     prepopulated_fields = {'slug': ('title',)}
     list_display_links = ('id', 'title')
@@ -18,13 +31,11 @@ class PostAdmin(admin.ModelAdmin):
 
 
 @admin.register(Category)
-class CategoryAdmin(DraggableMPTTAdmin):
+class CategoryAdmin(TranslationAdmin):
     save_as = True
     save_on_top = True
-    list_display = ('tree_actions', 'indented_title', 'id', 'get_photo')
-    mptt_indent_field = "some_node_field"
+    list_display = ('id', 'get_photo')
     prepopulated_fields = {'slug': ('name',)}
-    list_display_links = ('indented_title',)
     search_fields = ('name',)
     readonly_fields = ('get_photo',)
 

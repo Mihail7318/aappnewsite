@@ -36,14 +36,10 @@ class Setting(models.Model):
 
 class Standartpages(models.Model):
 
-    privacypolicy = RichTextUploadingField(blank=True, verbose_name='Политика конфиденциальности(ru)')
-    privacypolicyen = RichTextUploadingField(blank=True, verbose_name='Политика конфиденциальности(en)')
-    useragreement = RichTextUploadingField(blank=True, verbose_name='Пользовательское соглашение(ru)')
-    useragreementen = RichTextUploadingField(blank=True, verbose_name='Пользовательское соглашение(en)')
-    contact = RichTextUploadingField(blank=True, verbose_name='Контакты(ru)')
-    contacten = RichTextUploadingField(blank=True, verbose_name='Контакты(en)')
-    aboutus = RichTextUploadingField(blank=True, verbose_name='О нас(ru)')
-    aboutusen = RichTextUploadingField(blank=True, verbose_name='О нас(en)')
+    privacypolicy = RichTextUploadingField(blank=True, verbose_name='Политика конфиденциальности')
+    useragreement = RichTextUploadingField(blank=True, verbose_name='Пользовательское соглашение')
+    contact = RichTextUploadingField(blank=True, verbose_name='Контакты')
+    aboutus = RichTextUploadingField(blank=True, verbose_name='О нас')
 
     class Meta:
         verbose_name = "стандартные страницы"
@@ -52,10 +48,8 @@ class Standartpages(models.Model):
 
 class Faq(models.Model):
 
-    problem = models.TextField (max_length=255, verbose_name='Вопрос(RU)')
-    reply = models.TextField(verbose_name='Ответ(RU)')
-    problemen = models.TextField(max_length=255, verbose_name='Вопрос(EN)')
-    replyen  = models.TextField(verbose_name='Ответ(EN)')
+    problem = models.TextField (max_length=255, verbose_name='Вопрос')
+    reply = models.TextField(verbose_name='Ответ')
 
     def __str__(self):
         return self.problem
