@@ -1,3 +1,7 @@
+{% load static%}
+{% load i18n %}
+
+
 <!doctype html>
 <html lang="en">
 
@@ -7,13 +11,18 @@
     <meta name="author" content="ThemeStarz">
 
     <!--CSS -->
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/font-awesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'font-awesome/css/fontawesome-all.min.css' %}">
     <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.0/mapsjs-ui.css?dp-version=1533195059" />
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     <title>MyHouse - Advanced Real Estate HTML Template by ThemeStarz</title>
+    <script>
+    function switch_language(){
+        document.getElementById("input_language").click()
 
+    }
+    </script>
 </head>
 
 <body>
@@ -52,19 +61,24 @@
                     <!--Search Input-->
                     <input type="text" class="form-control p-2 border-left bg-transparent w-auto" placeholder="Search">
 
-                    <!--Currency Select-->
-                    <select class="custom-select bg-transparent ts-text-small border-left" id="currency" name="currency">
-                        <option value="1">GBP</option>
-                        <option value="2">USD</option>
-                        <option value="3">EUR</option>
-                    </select>
 
-                    <!--Language Select-->
-                    <select class="custom-select bg-transparent ts-text-small border-left border-right" id="language" name="language">
-                        <option value="1">EN</option>
-                        <option value="2">FR</option>
-                        <option value="3">DE</option>
-                    </select>
+                    <form  action="{% url 'set_language' %}" method="post">{% csrf_token %}{{ language.code }}
+                        <select style="width: 68px;"onchange="switch_language()" class="custom-select bg-transparent ts-text-small border-left border-right" id="language" name="language">
+                            {% get_current_language as LANGUAGE_CODE %}
+                            {% get_available_languages as LANGUAGES %}
+                            {% get_language_info_list for LANGUAGES as languages %}
+                            {% for language in languages %}
+                                <option  value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}  selected {% endif %}>
+                                   {{ language.code }}
+                                </option>
+                            {% endfor %}{{ language.code }}
+                        </select>
+                        <input style="display:none;" type="submit" value="" id = "input_language">
+                    </form>
+
+
+
+
 
                 </div>
                 <!--end navbar-nav-->
@@ -79,7 +93,7 @@
 
                 <!--Brand Logo-->
                 <a class="navbar-brand" href="index-map-leaflet-fullscreen.html">
-                    <img src="assets/img/logo.png" alt="">
+                    <img src="{% static 'img/logo.png" alt="">
                 </a>
 
                 <!--Responsive Collapse Button-->
@@ -659,7 +673,7 @@
                     <!--Brand and description-->
                     <div class="col-md-6">
                         <a href="#" class="brand">
-                            <img src="assets/img/logo.png" alt="">
+                            <img src="{% static 'img/logo.png" alt="">
                         </a>
                         <p class="mb-4">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat tempor sapien.
@@ -749,18 +763,18 @@
 </div>
 <!--end page-->
 
-<script src="assets/js/jquery-3.3.1.min.js"></script>
-<script src="assets/js/popper.min.js"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/js/jquery.magnific-popup.min.js"></script>
-<script src="assets/js/owl.carousel.min.js"></script>
-<script src="http://js.api.here.com/v3/3.0/mapsjs-core.js"></script>
-<script src="http://js.api.here.com/v3/3.0/mapsjs-service.js"></script>
-<script src="http://js.api.here.com/v3/3.0/mapsjs-ui.js"></script>
-<script src="http://js.api.here.com/v3/3.0/mapsjs-mapevents.js"></script>
-<script src="http://js.api.here.com/v3/3.0/mapsjs-clustering.js"></script>
-<script src="assets/js/custom.js"></script>
-<script src="assets/js/map-here.js"></script>
+<script src="{% static 'js/jquery-3.3.1.min.js' %} "></script>
+<script src="{% static 'js/popper.min.js' %} "></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %} "></script>
+<script src="{% static 'js/jquery.magnific-popup.min.js' %} "></script>
+<script src="{% static 'js/owl.carousel.min.js' %} "></script>
+<script src="http://js.api.here.com/v3/3.0/mapsjs-core.js' %} "></script>
+<script src="http://js.api.here.com/v3/3.0/mapsjs-service.js' %} "></script>
+<script src="http://js.api.here.com/v3/3.0/mapsjs-ui.js' %} "></script>
+<script src="http://js.api.here.com/v3/3.0/mapsjs-mapevents.js' %} "></script>
+<script src="http://js.api.here.com/v3/3.0/mapsjs-clustering.js' %} "></script>
+<script src="{% static 'js/custom.js' %} "></script>
+<script src="{% static 'js/map-here.js' %} "></script>
 
 
         {% endblock %}

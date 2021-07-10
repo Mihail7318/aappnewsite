@@ -1,5 +1,6 @@
 {% extends 'base/base.html' %}
 {% load static%}
+{% load static i18n %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -84,7 +85,7 @@
                                                         {% endif %}
 
                                     </span>
-                                    <div class="float-right"> <h6> Дата: <span> {{ post.created_at|date:"Y-m-d" }}</span></h6> </div>
+                                    <div class="float-right"> <h6>{% trans 'Дата:' %} <span> {{ post.created_at|date:"Y-m-d" }}</span></h6> </div>
 
                         </div>
                     </div>

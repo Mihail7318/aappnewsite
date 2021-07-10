@@ -3,17 +3,25 @@ from django import forms
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django.utils.safestring import mark_safe
 from mptt.admin import DraggableMPTTAdmin
+from modeltranslation.admin import TranslationAdmin
+
 
 from .models import *
 
 class PostAdminForm(forms.ModelForm):
-    content = forms.CharField(widget=CKEditorUploadingWidget())
+    """Форма с виджетом ckeditor"""
+    content_ru = forms.CharField(label="Описание", widget=CKEditorUploadingWidget())
+    content_en = forms.CharField(label="Описание", widget=CKEditorUploadingWidget())
+
     class Meta:
         model = Post
         fields = '__all__'
 
+
+
+
 @admin.register(Post)
-class PostAdmin(admin.ModelAdmin):
+class PostAdmin(TranslationAdmin):
     list_display = ('id', 'title', 'category', 'created_at', 'status', 'views', )
     prepopulated_fields = {'slug': ('title',)}
     list_display_links = ('id', 'title')
@@ -26,7 +34,7 @@ class PostAdmin(admin.ModelAdmin):
 
 
 @admin.register(Category)
-class CategoryAdmin(DraggableMPTTAdmin):
+class CategoryAdmin(DraggableMPTTAdmin, TranslationAdmin):
     save_as = True
     save_on_top = True
     list_display = ('tree_actions', 'indented_title', 'id', 'get_photo')
@@ -46,7 +54,7 @@ class CategoryAdmin(DraggableMPTTAdmin):
 
 
 @admin.register(Tag)
-class TagAdmin(admin.ModelAdmin):
+class TagAdmin(TranslationAdmin):
     save_as = True
     save_on_top = True
     list_display = ('id', 'name', 'get_image')
