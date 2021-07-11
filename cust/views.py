@@ -36,6 +36,10 @@ def faq(request):
     context = {
         'faq': faq,
     }
+    if request.LANGUAGE_CODE == "ru":
+        context['title'] = 'Часто задаваемые вопросы'
+    if request.LANGUAGE_CODE == "en":
+        context['title'] = 'Frequently Asked Questions'
     return render(request, 'cust/pages/FAQ.html', context=context )
 
 
@@ -45,6 +49,11 @@ def privacypolicy(request):
     context = {
         'standartpages': standartpages,
     }
+    if request.LANGUAGE_CODE == "ru":
+        context['title'] = 'Политика  конфиденциальности '
+    if request.LANGUAGE_CODE == "en":
+        context['title'] = 'Privacy policy'
+
     return render(request, 'cust/pages/privacypolicy.html', context=context )
 
 #aboutus
@@ -53,6 +62,10 @@ def aboutus(request):
     context = {
         'standartpages': standartpages,
     }
+    if request.LANGUAGE_CODE == "ru":
+        context['title'] = 'О нас'
+    if request.LANGUAGE_CODE == "en":
+        context['title'] = 'About'
     return render(request, 'cust/pages/aboutus.html', context=context )
 
 #useragreement
@@ -61,6 +74,10 @@ def useragreement(request):
     context = {
         'standartpages': standartpages,
     }
+    if request.LANGUAGE_CODE == "ru":
+        context['title'] = 'Пользовательское соглашение'
+    if request.LANGUAGE_CODE == "en":
+        context['title'] = 'User Agreement'
     return render(request, 'cust/pages/useragreement.html', context=context )
 
 #contact
@@ -69,4 +86,8 @@ def contact(request):
     context = {
         'standartpages': standartpages,
     }
+    if request.LANGUAGE_CODE == "ru":
+        context['title'] = 'Контакты'
+    if request.LANGUAGE_CODE == "en":
+        context['title'] = 'Contact'
     return render(request, 'cust/pages/contact.html', context=context )
