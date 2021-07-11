@@ -39,18 +39,27 @@
         {% block body %}
         <!--================Categories Banner Area =================-->
         <section class="solid_banner_area">
-            <div class="container">
-                <div class="solid_banner_inner">
-                    <h3>{{ title }}</h3>
-                    <ul>
-                        <li><a href="/">Главная</a></li>
-                        <li><a href="/news/">блок</a></li>
-                        <li><a href="{{ post.category.get_absolute_url }}">{{ post.category }}</a></li>
-                        <li><a href="#">{{ post.title }}</a></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+                                <div class="container">
+                                    <div class="solid_banner_inner">
+                                        <h3>{{ title_rubrics }}</h3>
+                                            <ul>
+                                                {% for a in 1|get_all_category %}
+                                                    <li><a href="{{ a.get_absolute_url }}">{{ a.name }}</a></li>
+                                                {% endfor %}
+                                            </ul>
+                                    </div>
+
+                                    <div class="solid_banner_inner">
+                                        <h3>{{ title_tag }}</h3>
+                                            <ul>
+                                                {% for a in 1|get_all_tag %}
+                                                    <li><a href="{{ a.get_absolute_url }}">{{ a.name }}</a></li>
+                                                {% endfor %}
+                                            </ul>
+                                    </div>
+
+                                </div>
+                            </section>
         <!--================End Categories Banner Area =================-->
 
 

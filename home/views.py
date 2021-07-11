@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 
-from cust.forms import DocumentForm
-
+from news.models import Post
 from .models import Slider
 
 

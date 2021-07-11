@@ -40,12 +40,13 @@
             </div>
         </nav>
     </header>
+
     <!--end Header-->
 <!--=================== block body ====================-->
 
 <section id="ts-hero" class="ts-separate-bg-element">
     {% block body %}
-        <div align="center" style="min-width:200px;">Тело сайта...1.</div>
+        <div align="center" style="min-width:200px;"><p>{% trans 'Тело сайта...' %}</p>
     {% endblock %}
 </section>
 <!--==================== Footer =======================-->
@@ -66,7 +67,7 @@
                 <!--copyright-->
         {% include 'base/footer/copyright.html' %}
     </footer>
-</div>
+
 {% endblock %}
 {% include 'base/footer/footer-script.html' %}
     </body>

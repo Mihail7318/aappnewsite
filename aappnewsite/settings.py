@@ -38,12 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home.apps.HomeConfig',
+    #'home.apps.HomeConfig',
     'news.apps.NewsConfig',
-    'konkurs.apps.KonkursConfig',
-    'sovet.apps.SovetConfig',
+    #'konkurs.apps.KonkursConfig',
+    #'sovet.apps.SovetConfig',
     'cust.apps.CustConfig',
-    'smena.apps.SmenaConfig',
+    #'smena.apps.SmenaConfig',
+    'glavnaya.apps.GlavnayaConfig',
 
     'debug_toolbar',
     'mptt',
@@ -136,6 +137,9 @@ LANGUAGES = (
     ('ru', gettext('Russia')),
     ('en', gettext('English')),
 )
+
+MODELTRANSLATION_LANGUAGES = ('en', 'ru')
+
 
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),

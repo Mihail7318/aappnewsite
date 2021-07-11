@@ -1,7 +1,18 @@
 {% extends 'base/base.html' %}
 {% load static%}
-
+{% load i18n %}
 {% block body %}
+<div>
 
+    {% include 'home/slider.html' %}
+    {% include 'home/slider_news.html' %}
+
+    {% include 'home/rubrics.html' %}
+    {% include 'home/body.html' %}
+    {% include 'home/favorits.html' %}
+    {% include 'home/sidebar.html' %}
+
+
+</div>
 
 {% endblock %}

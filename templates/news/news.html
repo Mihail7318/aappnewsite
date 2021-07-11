@@ -23,19 +23,29 @@
                             <section class="solid_banner_area">
                                 <div class="container">
                                     <div class="solid_banner_inner">
-                                        <h3>{{ title }}</h3>
+                                        <h3>{{ title_rubrics }}</h3>
                                             <ul>
-                                                <li><a href="/">Главная</a></li>
-                                                <li><a href="/news/">Блог</a></li>
-                                                <li><a href="">{{ title }}</a></li>
+                                                {% for a in 1|get_all_category %}
+                                                    <li><a href="{{ a.get_absolute_url }}">{{ a.name }}</a></li>
+                                                {% endfor %}
                                             </ul>
                                     </div>
+
+                                    <div class="solid_banner_inner">
+                                        <h3>{{ title_tag }}</h3>
+                                            <ul>
+                                                {% for a in 1|get_all_tag %}
+                                                    <li><a href="{{ a.get_absolute_url }}">{{ a.name }}</a></li>
+                                                {% endfor %}
+                                            </ul>
+                                    </div>
+
                                 </div>
                             </section>
                             <!--- Новости --->
                         </div>
                         <div class="col-lg-9 float-md-right">
-
+                             <h3>{{ title }}</h3>
 							<div class="c_product_grid_details">
                                 {% for post in posts %}
                                 <div class="c_product_item">

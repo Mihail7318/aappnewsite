@@ -9,18 +9,20 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('sovet.urls')),
-    path('konkurs/', include('konkurs.urls')),
+    #path('', include('sovet.urls')),
+    #path('konkurs/', include('konkurs.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('i18n/', include('django.conf.urls.i18n')),
     path('__debug__/', include(debug_toolbar.urls)),
 ]
 
 urlpatterns += i18n_patterns(
-    path('news/', include('news.urls')),
-    path('p/', include('cust.urls')),
-    path('', include('smena.urls')),
-    path('', include('home.urls')),
+    path("", include("glavnaya.urls")),
+    path('news/', include("news.urls")),
+    path("", include("cust.urls")),
+
+    #path('cust/', include('cust.urls')),
+    #path('smena/', include('smena.urls')),
 
 )
 
