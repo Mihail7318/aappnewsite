@@ -40,11 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home.apps.HomeConfig',
     'news.apps.NewsConfig',
-    'profsmena.apps.ProfsmenaConfig',
     'konkurs.apps.KonkursConfig',
     'sovet.apps.SovetConfig',
     'cust.apps.CustConfig',
-
+    'smena.apps.SmenaConfig',
 
     'debug_toolbar',
     'mptt',

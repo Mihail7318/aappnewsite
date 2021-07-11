@@ -11,8 +11,8 @@ class Popsov(models.Model):
 
     status = models.CharField(default='P',max_length=30, choices=STATUS_NEWS, verbose_name='Статус')
     title = models.CharField(max_length=255, db_index=True, verbose_name='Имя')
-    slug = models.SlugField(unique=True, verbose_name='Ссылка')
-    content = RichTextUploadingField(blank=True, verbose_name='Описание')
+    doljnost = models.CharField(max_length=255, db_index=True, verbose_name='Должность')
+    works = models.CharField(max_length=255, db_index=True, verbose_name='Место работы')
     image = models.ImageField(blank=True, upload_to='media/image/', null=True, verbose_name='Фото')
     views = models.IntegerField(default=0, verbose_name='Количество просмотров')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
@@ -20,9 +20,6 @@ class Popsov(models.Model):
 
     def __str__(self):
         return self.title
-
-    def get_absolute_url(self):
-        return reverse('postpop', kwargs={"slug": self.slug})
 
     class Meta:
         verbose_name = 'Попечительский совет'
@@ -39,8 +36,8 @@ class Exsov(models.Model):
 
     status = models.CharField(default='Publish', max_length=30, choices=STATUS_NEWS, verbose_name='Статус')
     title = models.CharField(max_length=255, db_index=True, verbose_name='Имя')
-    slug = models.SlugField(unique=True, verbose_name='Ссылка')
-    content = RichTextUploadingField(blank=True, verbose_name='Описание')
+    doljnost = models.CharField(max_length=255, db_index=True, verbose_name='Должность')
+    works = models.CharField(max_length=255, db_index=True, verbose_name='Место работы')
     image = models.ImageField(blank=True, upload_to='media/image/', null=True, verbose_name='Фото')
     views = models.IntegerField(default=0, verbose_name='Количество просмотров')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
@@ -48,9 +45,6 @@ class Exsov(models.Model):
 
     def __str__(self):
         return self.title
-
-    def get_absolute_url(self):
-        return reverse('postex', kwargs={"slug": self.slug})
 
     class Meta:
         verbose_name = 'Экспертный совет'

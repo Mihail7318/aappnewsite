@@ -11,9 +11,8 @@ from sovet.models import Popsov, Exsov
 @admin.register(Popsov)
 class PopsovAdmin(admin.ModelAdmin):
     list_display = ('id', 'title',  'created_at', 'status', 'views', )
-    prepopulated_fields = {'slug': ('title',)}
     list_display_links = ('id', 'title')
-    search_fields = ('title', 'content', 'views')
+    search_fields = ('title', 'content', 'views', 'doljnost')
     list_editable = ('status',)
     list_filter = ('status',)
     save_as = True
@@ -22,7 +21,6 @@ class PopsovAdmin(admin.ModelAdmin):
 @admin.register(Exsov)
 class ExsovAdmin(admin.ModelAdmin):
     list_display = ('id', 'title',  'created_at', 'status', 'views', )
-    prepopulated_fields = {'slug': ('title',)}
     list_display_links = ('id', 'title')
     search_fields = ('title', 'content', 'views')
     list_editable = ('status',)
