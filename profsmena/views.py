@@ -7,7 +7,7 @@ from django.db.models import F
 class Home(ListView) :
     model = Smena
     template_name = 'profsmen/profsmena.html'
-    context_object_name = 'smenas'
+    context_object_name = 'posts'
     paginate_by = 2
 
     def get_context_data(self, *, object_list=None, **kwargs):

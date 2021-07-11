@@ -11,7 +11,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
     path('', include('sovet.urls')),
-    path('', include('cust.urls')),
+
     path('konkurs/', include('konkurs.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('i18n/', include('django.conf.urls.i18n')),
@@ -20,8 +20,8 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     path('news/', include('news.urls')),
-    path('', include('cust.urls')),
-    path('', include('profsmena.urls')),
+    path('p/', include('cust.urls')),
+    path('profsmena/', include('profsmena.urls')),
 
 )
 

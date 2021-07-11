@@ -1,8 +1,10 @@
 from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.urls import reverse
-from mptt.models import TreeForeignKey
+
 from news.models import *
+
+# Create your models here.
 
 
 class Smena(models.Model):
@@ -14,8 +16,6 @@ class Smena(models.Model):
 
     status = models.CharField(default='P',max_length=30, choices=STATUS_NEWS, verbose_name='Статус')
     title = models.CharField(max_length=255, db_index=True, verbose_name='Наименование')
-    start = models.DateTimeField(null=True, blank=True, verbose_name='Начало')
-    end = models.DateTimeField(null=True, blank=True, verbose_name='Окончание')
     slug = models.SlugField(unique=True, verbose_name='Ссылка')
     content = RichTextUploadingField(blank=True, verbose_name='Описание')
     rubric = models.ForeignKey('news.Category', on_delete=models.CASCADE)
@@ -31,6 +31,6 @@ class Smena(models.Model):
         return reverse('post', kwargs={"slug": self.slug})
 
     class Meta:
-        verbose_name = 'Профильная смена'
-        verbose_name_plural = 'Профильная смена'
+        verbose_name = 'Статья(ю)'
+        verbose_name_plural = 'Статьи'
         ordering = ['-created_at']

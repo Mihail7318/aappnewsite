@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'sovet.apps.SovetConfig',
     'cust.apps.CustConfig',
 
+
     'debug_toolbar',
     'mptt',
     'ckeditor',

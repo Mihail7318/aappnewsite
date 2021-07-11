@@ -32,22 +32,3 @@ class SmenaAdmin(TranslationAdmin):
     save_as = True
     save_on_top = True
 
-
-@admin.register(Category)
-class CategoryAdmin(DraggableMPTTAdmin, TranslationAdmin):
-    save_as = True
-    save_on_top = True
-    list_display = ('tree_actions', 'indented_title', 'id', 'get_photo')
-    mptt_indent_field = "some_node_field"
-    prepopulated_fields = {'slug': ('name',)}
-    list_display_links = ('indented_title',)
-    search_fields = ('name',)
-    readonly_fields = ('get_photo',)
-
-
-    def get_photo(self, obj):
-        if obj.photo:
-            return mark_safe(f'<img src="{obj.photo.url}" width="50">')
-        return '-'
-
-    get_photo.short_description = 'минеатюра'
