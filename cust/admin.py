@@ -5,7 +5,7 @@ from django.utils.safestring import mark_safe
 from modeltranslation.admin import TranslationAdmin
 
 # Register your models here.
-from cust.models import Standartpages, Partner, Faq, Document
+from cust.models import Standartpages, Partner, Faq, Document, Setting
 
 
 
@@ -38,6 +38,9 @@ class FaqAdmin(TranslationAdmin):
 class DocumentAdmin(admin.ModelAdmin):
     save_on_top = True
 
+@admin.register(Setting)
+class SettingAdmin(admin.ModelAdmin):
+    save_on_top = True
 
 @admin.register(Partner)
 class PartnerAdmin(admin.ModelAdmin):
