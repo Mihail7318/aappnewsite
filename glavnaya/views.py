@@ -4,7 +4,7 @@ from django.views.generic import ListView, DetailView
 from django.template.defaulttags import register
 
 from news.models import Post
-from .models import Slider, Favourites
+from .models import *
 
 
 
@@ -15,13 +15,13 @@ def slider(request):
         'slider': slider,
         'title': 'Главная'
     }
-    return render(request, 'home/home.html', context=context )
+    return render(request, 'glavnaya/glavnaya.html', context=context )
 
 
 
 class Home(ListView) :
-    model = Favourites
-    template_name = 'home/home.html'
+    model = Favorites
+    template_name = 'glavnaya/glavnaya.html'
     context_object_name = 'posts'
     paginate_by = 2
 

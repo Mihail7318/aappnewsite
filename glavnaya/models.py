@@ -43,7 +43,21 @@ class Vidjet(models.Model):
         verbose_name_plural = 'Троица категорий'
 
 
-class Favourites(models.Model):
+
+class Favorit(models.Model):
+
+    favorit = models.ForeignKey(Category, related_name='favorit', on_delete=models.CASCADE, verbose_name='Ибранная категория')
+
+
+    def __int__(self):
+        return self.id
+
+    class Meta:
+        verbose_name = 'Ибранная категория'
+        verbose_name_plural = 'Ибранная категория'
+
+
+class Favorites(models.Model):
 
     favourites = models.ManyToManyField(Category, related_name='favourites', verbose_name='Список')
 
@@ -53,3 +67,16 @@ class Favourites(models.Model):
     class Meta:
         verbose_name = 'Избранная категория'
         verbose_name_plural = 'Избранные категорий'
+
+
+
+class Saidebar(models.Model):
+
+    saidebar = models.ManyToManyField(Category, related_name='saidebar', verbose_name='Список')
+
+    def __int__(self):
+        return self.id
+
+    class Meta:
+        verbose_name = 'Сайдбар'
+        verbose_name_plural = 'Сайдбар'

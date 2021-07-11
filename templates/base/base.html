@@ -27,8 +27,7 @@
 
         <!--PRIMARY NAVIGATION
         =============================================================================================================-->
-        <nav id="ts-primary-navigation" class="navbar navbar-expand-md navbar-light">
-            <div class="container">
+
                     <!--LEFT NAVIGATION MAIN LEVEL
                     =================================================================================================-->
                     {% include 'base/header/left-menu.html' %}
@@ -36,19 +35,15 @@
                     =================================================================================================-->
                     {% include 'base/header/right-menu.html' %}
 
-                </div>
-            </div>
         </nav>
     </header>
 
     <!--end Header-->
 <!--=================== block body ====================-->
 
-<section id="ts-hero" class="ts-separate-bg-element">
     {% block body %}
-        <div align="center" style="min-width:200px;"><p>{% trans 'Тело сайта...' %}</p>
+
     {% endblock %}
-</section>
 <!--==================== Footer =======================-->
 {% block Footer %}
 <footer id="ts-footer">
@@ -70,5 +65,7 @@
 
 {% endblock %}
 {% include 'base/footer/footer-script.html' %}
+
+
     </body>
 </html>

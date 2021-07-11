@@ -27,8 +27,31 @@ class VidjetAdmin(admin.ModelAdmin):
             return True
 
 
-@admin.register(Favourites)
-class FavouritesAdmin(admin.ModelAdmin):
+@admin.register(Favorit)
+class FavoritAdmin(admin.ModelAdmin):
+    save_on_top = True
+    def has_add_permission(self, request):
+        num_objects = self.model.objects.count()
+        if num_objects >= 1:
+            return False
+        else:
+            return True
+
+
+@admin.register(Favorites)
+class FavoritesAdmin(admin.ModelAdmin):
+    save_on_top = True
+    def has_add_permission(self, request):
+        num_objects = self.model.objects.count()
+        if num_objects >= 1:
+            return False
+        else:
+            return True
+
+
+
+@admin.register(Saidebar)
+class SaidebarAdmin(admin.ModelAdmin):
     save_on_top = True
     def has_add_permission(self, request):
         num_objects = self.model.objects.count()

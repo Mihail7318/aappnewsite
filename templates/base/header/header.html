@@ -34,7 +34,7 @@
                     <input type="text" class="form-control p-2 border-left bg-transparent w-auto" placeholder="Search">
 
 
-                    <form  action="{% url 'set_language' %}" method="post">{% csrf_token %}{{ language.code }}
+                    <form  action="{% url 'set_language' %}">{% csrf_token %}{{ language.code }}
                         <select style="width: 68px;"onchange="switch_language()" class="custom-select bg-transparent ts-text-small border-left border-right" id="language" name="language">
                             {% get_current_language as LANGUAGE_CODE %}
                             {% get_available_languages as LANGUAGES %}

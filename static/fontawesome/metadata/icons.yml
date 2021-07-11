@@ -6520,7 +6520,7 @@ home:
   changes:
     - '1'
     - 5.0.0
-  label: home
+  label: glavnaya
   search:
     terms:
       - house
