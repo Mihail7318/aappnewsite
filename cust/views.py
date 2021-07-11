@@ -20,7 +20,7 @@ def Upload_file(request):
 
 
 #setting
-def setting(request):
+def Setting(request):
     setting = Setting.objects.all()
     context = {
         'setting': setting,

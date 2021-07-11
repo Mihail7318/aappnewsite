@@ -38,9 +38,16 @@ class FaqAdmin(TranslationAdmin):
 class DocumentAdmin(admin.ModelAdmin):
     save_on_top = True
 
+
 @admin.register(Setting)
-class SettingAdmin(admin.ModelAdmin):
+class SettingAdmin(TranslationAdmin):
     save_on_top = True
+    def has_add_permission(self, request):
+        num_objects = self.model.objects.count()
+        if num_objects >= 1:
+            return False
+        else:
+            return True
 
 @admin.register(Partner)
 class PartnerAdmin(admin.ModelAdmin):
