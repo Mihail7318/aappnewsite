@@ -55,6 +55,7 @@ class Post(models.Model):
     )
 
     status = models.CharField(default='P',max_length=30, choices=STATUS_NEWS, verbose_name='Статус')
+    yved = models.BooleanField(default=False, verbose_name='Уведомить')
     title = models.CharField(max_length=255, db_index=True, verbose_name='Наименование')
     slug = models.SlugField(unique=True, verbose_name='Ссылка')
     content = RichTextUploadingField(blank=True, verbose_name='Описание')

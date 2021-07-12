@@ -10,7 +10,8 @@ class Fed(models.Model):
     )
 
     status = models.CharField(default='P',max_length=30, choices=STATUS_NEWS, verbose_name='Статус')
-    title = models.CharField(max_length=255, db_index=True, verbose_name='Наименование(ru)')
+    yved = models.BooleanField(default=False, verbose_name='Уведомить')
+    title = models.CharField(max_length=255, db_index=True, verbose_name='Наименование')
     slug = models.CharField(max_length=255, db_index=True, verbose_name='Ссылка')
     image = models.ImageField(blank=True, upload_to='media/image/', null=True, verbose_name='Изображение')
     views = models.IntegerField(default=0, verbose_name='Количество просмотров')
@@ -34,7 +35,8 @@ class Reg(models.Model):
     )
 
     status = models.CharField(default='P',max_length=30, choices=STATUS_NEWS, verbose_name='Статус')
-    title = models.CharField(max_length=255, db_index=True, verbose_name='Наименование(ru)')
+    yved = models.BooleanField(default=False, verbose_name='Уведомить')
+    title = models.CharField(max_length=255, db_index=True, verbose_name='Наименование')
     slug = models.CharField(max_length=255,verbose_name='Ссылка')
     image = models.ImageField(blank=True, upload_to='media/image/', null=True, verbose_name='Изображение')
     views = models.IntegerField(default=0, verbose_name='Количество просмотров')
