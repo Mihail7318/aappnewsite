@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'cust.apps.CustConfig',
     'smena.apps.SmenaConfig',
     'glavnaya.apps.GlavnayaConfig',
+    'zayavki.apps.ZayavkiConfig',
 
     'debug_toolbar',
     'mptt',

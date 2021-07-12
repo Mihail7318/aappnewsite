@@ -14,11 +14,13 @@ urlpatterns = [
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('i18n/', include('django.conf.urls.i18n')),
     path('__debug__/', include(debug_toolbar.urls)),
+
 ]
 
 urlpatterns += i18n_patterns(
     path("", include("glavnaya.urls")),
     path('news/', include("news.urls")),
+    path("", include("zayavki.urls")),
     path("", include("cust.urls")),
 
     #path('cust/', include('cust.urls')),
