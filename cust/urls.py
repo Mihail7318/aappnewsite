@@ -9,7 +9,7 @@ urlpatterns = [
 
     path('faq/', faq),
     path('privacypolicy/', privacypolicy),
-    path('contact/', contact),
+    path('contacts/', contact),
     path('aboutus/', aboutus),
     path('useragreement/', useragreement),
 

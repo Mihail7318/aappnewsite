@@ -44,8 +44,11 @@ INSTALLED_APPS = [
     'cust.apps.CustConfig',
     'smena.apps.SmenaConfig',
     'glavnaya.apps.GlavnayaConfig',
-    'zayavki.apps.ZayavkiConfig',
+    'contact.apps.ContactConfig',
+    'userprofile.apps.UserprofileConfig',
+    #'users.apps.UsersConfig',
 
+    'phonenumber_field',
     'debug_toolbar',
     'mptt',
     'ckeditor',
@@ -53,6 +56,7 @@ INSTALLED_APPS = [
     'faicon',
 
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
