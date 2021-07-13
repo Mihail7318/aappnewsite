@@ -15,3 +15,7 @@ class UserProfile(models.Model):
 
 class CustomUser(User):
     pass
+
+    class Meta:
+        verbose_name = 'Ученик'
+        verbose_name_plural = 'Ученики'

@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'glavnaya.apps.GlavnayaConfig',
     'contact.apps.ContactConfig',
     'userprofile.apps.UserprofileConfig',
-    #'users.apps.UsersConfig',
 
     'phonenumber_field',
     'debug_toolbar',
