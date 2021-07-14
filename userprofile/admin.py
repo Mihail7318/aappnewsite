@@ -36,6 +36,12 @@ class CustomUserisAdmin(UserAdmin):
     list_display = ['email', 'username', 'first_name']
     list_display_links = ('username',)
 
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        if request.user.is_superuser:
+            return qs
+        return qs.filter(id=request.user.id)
+
 # Перерегистрируем модель User
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
