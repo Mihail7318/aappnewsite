@@ -19,11 +19,10 @@ class UserAdmin(UserAdmin):
 
 
 @admin.register(CustomUser)
-class CustomUserAdmin(UserAdmin):
+class CustomUserAdmin(UserAdmin.ModelAdmin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
     model = CustomUser
-    exclude = ['region']
     list_display = ['email', 'username',]
     list_display_links = ('username',)
 
@@ -32,15 +31,9 @@ class CustomUserisAdmin(UserAdmin):
     add_form = CustomUserisCreationForm
     form = CustomUserisChangeForm
     model = CustomUseris
-    exclude = ['parent']
     list_display = ['email', 'username', 'first_name']
     list_display_links = ('username',)
 
-    def get_queryset(self, request):
-        qs = super().get_queryset(request)
-        if request.user.is_superuser:
-            return qs
-        return qs.filter(id=request.user.id)
 
 # Перерегистрируем модель User
 admin.site.unregister(User)

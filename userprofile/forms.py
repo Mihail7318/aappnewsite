@@ -4,8 +4,6 @@ from userprofile.models import CustomUser, CustomUseris
 
 class CustomUserCreationForm(UserCreationForm):
 
-    class MPTTMeta:
-        order_insertion_by = ['region']
 
     class Meta(UserCreationForm):
         model = CustomUser
@@ -29,3 +27,4 @@ class CustomUserisChangeForm(UserChangeForm):
     class Meta:
         model = CustomUseris
         fields = ('username', 'email', 'first_name')
+
