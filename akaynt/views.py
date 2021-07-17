@@ -5,7 +5,6 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect
 from django.views.generic import View
 from .models import Customer
-from .mixins import CartMixin
 from .forms import LoginForm, RegistrationForm
 
 
@@ -34,7 +33,7 @@ class LoginView(View):
         }
         return render(request, 'akaynt/login.html', context)
 
-class RegistrationView(CartMixin,View):
+class RegistrationView(View):
 
     def get(self, request, *args, **kwargs):
         form = RegistrationForm(request.POST or None)

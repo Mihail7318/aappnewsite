@@ -1,11 +1,13 @@
+from django.db import models
+from django.urls import reverse
+
+from django.contrib.auth.models import User
+
 from news.models import *
 
-from django.db import models
 from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.models import ContentType
-from django.urls import reverse
 from django.utils import timezone
-from django.contrib.auth.models import User
 
 User = get_user_model()
 
@@ -62,7 +64,7 @@ class Customer(models.Model):
 
 
 
-class CustomUseris(models.Model):
+class CustomUseris(User):
 
     class Meta:
         verbose_name = 'Учитель'
