@@ -45,8 +45,10 @@ INSTALLED_APPS = [
     'smena.apps.SmenaConfig',
     'glavnaya.apps.GlavnayaConfig',
     'contact.apps.ContactConfig',
-    'userprofile.apps.UserprofileConfig',
+    'akaynt.apps.AkayntConfig',
+    'taski.apps.TaskiConfig',
 
+    'crispy_forms',
     'phonenumber_field',
     'debug_toolbar',
     'mptt',

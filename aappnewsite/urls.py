@@ -16,6 +16,7 @@ urlpatterns = [
     path('__debug__/', include(debug_toolbar.urls)),
     #path('zayavki/', include("zayavki.urls")),
     path('', include("contact.urls")),
+    path('', include("akaynt.urls")),
 
 ]
 
