@@ -7,7 +7,7 @@ from .models import Popsov, Exsov
 from django.db.models import F
 
 
-class HomePop(ListView):
+class board_of_trustees(ListView):
     model = Popsov
     template_name = 'sovet/popsovet.html'
     context_object_name = 'postpops'
@@ -18,7 +18,7 @@ class HomePop(ListView):
         context['title'] = 'Classic Blog Design'
         return context
 
-class GetPostPop(DetailView):
+class get_one_board_of_trustees(DetailView):
     model = Popsov
     template_name = 'sovet/popdetails.html'
     context_object_name = 'postpop'
@@ -33,10 +33,10 @@ class GetPostPop(DetailView):
 
 #--------------------------------------------------
 
-class HomeEx(ListView) :
+class expert_council(ListView) :
     model = Exsov
-    template_name = 'sovet/exsovet.html'
-    context_object_name = 'postexs'
+    template_name = 'sovet/popsovet.html'
+    context_object_name = 'postpops'
     paginate_by = 2
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -44,7 +44,7 @@ class HomeEx(ListView) :
         context['title'] = 'Classic Blog Design'
         return context
 
-class GetPostEx(DetailView):
+class get_one_expert_council(DetailView):
     model = Exsov
     template_name = 'sovet/exdetails.html'
     context_object_name = 'postex'

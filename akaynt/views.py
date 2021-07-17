@@ -139,3 +139,12 @@ class RegistrationView(CartMixin,View):
             'form': form,
         }
         return render(request, 'akaynt/registration.html', context)
+
+class ProfileView(CartMixin, View):
+
+    def get(self, request, *args, **kwargs):
+        customer = Customer.objects.get(user=request.user)
+        return render(
+            request,
+            'akaynt/profile.html',
+        )

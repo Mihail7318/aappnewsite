@@ -10,7 +10,7 @@
 =====================================================================================================================-->
 <div class="ts-page-wrapper ts-homepage" id="page-top">
     <!--*********************************************************************************************************-->
-    <header id="ts-header" class="fixed-top">
+    <header id="ts-header" class="fixed-top" style = "display: contents;">
         <!-- SECONDARY NAVIGATION
         =============================================================================================================-->
         <nav id="ts-secondary-navigation" class="navbar p-0">
@@ -19,21 +19,15 @@
                     {% include 'base/header/top-left.html' %}
                 <!--Right Side-->
                     {% include 'base/header/top-right.html' %}
-
-                <!--end navbar-nav-->
             </div>
             <!--end container-->
         </nav>
+        <nav id="ts-primary-navigation" class="navbar navbar-expand-md navbar-light">
 
-        <!--PRIMARY NAVIGATION
-        =============================================================================================================-->
+                    {% include 'base/header/menu.html' %}
+                <!--Right Side-->
 
-                    <!--LEFT NAVIGATION MAIN LEVEL
-                    =================================================================================================-->
-                    {% include 'base/header/left-menu.html' %}
-                    <!--RIGHT NAVIGATION MAIN LEVEL
-                    =================================================================================================-->
-                    {% include 'base/header/right-menu.html' %}
+
 
         </nav>
     </header>

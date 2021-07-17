@@ -1,11 +1,18 @@
-<h3 class="footer-title text-uppercase editContent mb-lg-4 mb-3">
-    Newsletter</h3>
+{% extends 'base/base.html' %}
+{% load static%}
+{% load mptt_tags %}
+
+{% block body %}
+
 
 <p class="editContent">Форма обратной связи</p>
-<form action="{% url 'contact' %}" method="post" class="w3layouts-newsletter">
+<form action="{% url 'contact' %}" method="post"  enctype="multipart/form-data" class="w3layouts-newsletter">
     {% csrf_token %}
-    {{ contact_form }}
-    <button class="btn1 btn"><span class="fa fa-paper-plane-o" aria-hidden="true">Отправить</span>
-    </button>
-    </button>
+    {%  for a in form %}
+        {{ a }}<br>
+    {% endfor %}
+    <input type = "submit" value ="Отправить">
+
 </form>
+
+{% endblock %}

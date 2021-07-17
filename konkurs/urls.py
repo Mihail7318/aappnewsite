@@ -3,7 +3,7 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('ru/fed/', fed),
-    path('ru/reg/', reg),
+    path('fed/', fed),
+    path('reg/', reg),
 
 ]

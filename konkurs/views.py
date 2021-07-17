@@ -7,7 +7,7 @@ from .models import Fed, Reg
 def fed(request):
     fed = Fed.objects.all()
     context = {
-        'fed': fed,
+        'feds': fed,
     }
     return render(request, 'konkurs/Fed.html', context=context )
 

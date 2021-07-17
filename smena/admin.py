@@ -25,3 +25,8 @@ class SmenaAdmin(TranslationAdmin):
     form = SmenaAdminForm
     save_as = True
     save_on_top = True
+
+@admin.register(Rubric)
+class RubricAdmin(TranslationAdmin):
+    fields = ('name',)
+

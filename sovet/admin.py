@@ -6,10 +6,12 @@ from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django.utils.safestring import mark_safe
 
 # Register your models here.
+from modeltranslation.admin import TranslationAdmin
+
 from sovet.models import Popsov, Exsov
 
 @admin.register(Popsov)
-class PopsovAdmin(admin.ModelAdmin):
+class PopsovAdmin(TranslationAdmin):
     list_display = ('id', 'title',  'created_at', 'status', 'views', )
     list_display_links = ('id', 'title')
     search_fields = ('title', 'content', 'views', 'doljnost')
@@ -19,7 +21,7 @@ class PopsovAdmin(admin.ModelAdmin):
     save_on_top = True
 
 @admin.register(Exsov)
-class ExsovAdmin(admin.ModelAdmin):
+class ExsovAdmin(TranslationAdmin):
     list_display = ('id', 'title',  'created_at', 'status', 'views', )
     list_display_links = ('id', 'title')
     search_fields = ('title', 'content', 'views')

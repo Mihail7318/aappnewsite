@@ -8,4 +8,5 @@ class ContactView(CreateView):
     model = Contact
     form_class = ContactForm
     success_url = "/"
+    template_name = "contact/tags/form.html"
 

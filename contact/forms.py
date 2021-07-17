@@ -14,7 +14,7 @@ class ContactForm(forms.ModelForm):
             "text": forms.Textarea(attrs={"class": "editContent", "placeholder": "Ваше обращение ..."}),
             "phone": forms.TextInput(attrs={"class": "editContent", "placeholder": "Ваш телефон..."}),
             "soglasen": forms.CheckboxInput(attrs={"class": "editContent", "before": "согласен..."}),
-            "image": forms.TextInput(attrs={"class": "editContent", "before": "согласен..."}),
+            "image": forms.FileInput(attrs={"class": "editContent", "before": "согласен..."}),
 
         }
         labels = {

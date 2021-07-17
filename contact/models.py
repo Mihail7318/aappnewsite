@@ -17,12 +17,9 @@ class Contact(models.Model):
     firstname = models.CharField(max_length=255, db_index=True, verbose_name='Фамилия')
     phone = models.CharField(max_length=255, verbose_name='Телефон')
     text = models.TextField(max_length=255, verbose_name='Текст')
-    soglasen = models.BooleanField(default=False, verbose_name='Согласен')
+    soglasen = models.BooleanField(default=False, verbose_name='Согласен на обработку персональный данных')
     image = models.ImageField(blank=True,  null=True, verbose_name='Изображение')
     date = models.DateTimeField(auto_now_add=True, verbose_name='Дата')
 
     def __str__(self):
         return self.name
-
-    class Meta:
-        verbose_name = 'Заявки'
