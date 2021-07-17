@@ -526,16 +526,29 @@
                     <ul class="navbar-nav ml-auto">
 
                         <!--LOGIN (Main level)
+
+            {% if not request.user.is_authenticated %}
+
+
                         =============================================================================================-->
                         <li class="nav-item">
-                            <a class="nav-link" href="login.html"><ya-tr-span data-index="78-0" data-value="Login" data-translation="Вход" data-type="trSpan">Вход</ya-tr-span></a>
+                            <a class="nav-link" href="{% url 'login' %}"><ya-tr-span data-index="78-0" data-value="Login" data-translation="Вход" data-type="trSpan">Вход</ya-tr-span></a>
                         </li>
 
                         <!--REGISTER (Main level)
                         =============================================================================================-->
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="register.html"><ya-tr-span data-index="79-0" data-value="Register" data-translation="Регистрация" data-type="trSpan">Регистрация</ya-tr-span></a>
+                            <a class="nav-link text-dark" href="{% url 'registration' %}"><ya-tr-span data-index="79-0" data-value="Register" data-translation="Регистрация" data-type="trSpan">Регистрация</ya-tr-span></a>
+                        {% else %}
+              <li class="nav-item">
+                  <span class="navbar-text text-light">Здравствуйте, {% if request.user.is_authenticated %}<span class="badge badge-danger"><a href="#" style="text-decoration: none; font-size: 14px;">{{ request.user.username }}</a></span>{% else %} гоcть!{% endif %}<a href="{% url 'logout' %}">| Выйти</a></span>
+              </li>
+
+
                         </li>
+          {% endif %}
+
+
 
                         <!--SUBMIT (Main level)
                         =============================================================================================-->

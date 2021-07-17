@@ -1,83 +1,13 @@
-import operator
-
-from functools import reduce
-from itertools import chain
 from django.db import transaction
 from django.shortcuts import render
-from django.contrib.auth import login, authenticate
+from django.contrib import messages
+from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect
 from django.views.generic import View
-
+from .models import Customer
 from .mixins import CartMixin
 from .forms import LoginForm, RegistrationForm
-#from .utils import recalc_cart
 
-#from specs.models import ProductFeatures
-from .models import Customer
-
-'''
-class MyQ(Q):
-
-    default = 'OR'
-
-
-
-class BaseView(CartMixin, View):
-
-    def get(self, request, *args, **kwargs):
-        categories = Category.objects.all()
-        products = Product.objects.all()
-        context = {
-            'categories': categories,
-            'products': products,
-            'cart': self.cart
-        }
-        return render(request, 'base.html', context)
-
-
-
-class ChangeQTYView(CartMixin, View):
-
-    def post(self, request, *args, **kwargs):
-        product_slug = kwargs.get('slug')
-        product = Product.objects.get(slug=product_slug)
-        cart_product = CartProduct.objects.get(
-            user=self.cart.owner, cart=self.cart, product=product
-        )
-        qty = int(request.POST.get('qty'))
-        cart_product.qty = qty
-        cart_product.save()
-        recalc_cart(self.cart)
-        messages.add_message(request, messages.INFO, "Кол-во успешно изменено")
-        return HttpResponseRedirect('/cart/')
-
-
-class MakeOrderView(CartMixin, View):
-
-    @transaction.atomic
-    def post(self, request, *args, **kwargs):
-        form = OrderForm(request.POST or None)
-        customer = Customer.objects.get(user=request.user)
-        if form.is_valid():
-            new_order = form.save(commit=False)
-            new_order.customer = customer
-            new_order.first_name = form.cleaned_data['first_name']
-            new_order.last_name = form.cleaned_data['last_name']
-            new_order.phone = form.cleaned_data['phone']
-            new_order.address = form.cleaned_data['address']
-            new_order.buying_type = form.cleaned_data['buying_type']
-            new_order.order_date = form.cleaned_data['order_date']
-            new_order.comment = form.cleaned_data['comment']
-            new_order.save()
-            self.cart.in_order = True
-            self.cart.save()
-            new_order.cart = self.cart
-            new_order.save()
-            customer.orders.add(new_order)
-            messages.add_message(request, messages.INFO, 'Спасибо за заказ! Менеджер с Вами свяжется')
-            return HttpResponseRedirect('/')
-        return HttpResponseRedirect('/checkout/')
-'''
 
 class LoginView(View):
 
@@ -140,10 +70,9 @@ class RegistrationView(CartMixin,View):
         }
         return render(request, 'akaynt/registration.html', context)
 
-class ProfileView(CartMixin, View):
+class ProfileView(View):
 
     def get(self, request, *args, **kwargs):
-        customer = Customer.objects.get(user=request.user)
         return render(
             request,
             'akaynt/profile.html',

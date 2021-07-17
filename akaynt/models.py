@@ -1,10 +1,11 @@
+from news.models import *
+
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.models import ContentType
 from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth.models import User
-from news.models import *
 
 User = get_user_model()
 
@@ -13,7 +14,30 @@ class Customer(models.Model):
 
     user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
     phone = models.CharField(max_length=20, verbose_name='Номер телефона', null=True, blank=True)
+    onli = models.BooleanField(default=False, verbose_name='Ученик онлайн')
+    avatar = models.ImageField(upload_to='images/users', verbose_name='Изображение', null=True, blank=True, )
+    dt = models.DateField(max_length=255, verbose_name='Дата рождения')
     status = models.BooleanField(default=False, verbose_name='Статус')
+    STATUS_PUNKT = [
+        ('Ульяновск', (
+            ('sc-1', 'Школа №1'),
+            ('sc-2', 'Школа №1'),
+        )
+         ),
+        ('Барыш', (
+            ('sc-1', 'Школа №1'),
+            ('sc-2', 'Школа №1'),
+        )
+         ),
+        ('Димитровград', (
+            ('sc-1', 'Школа №1'),
+            ('sc-2', 'Школа №1'),
+        )
+         ),
+    ]
+
+    punkt = models.CharField(max_length=30, choices=STATUS_PUNKT, verbose_name='Населеный пункт')
+
     STATUS_KLASS = (
         ('1', '1'),
         ('2', '2'),
