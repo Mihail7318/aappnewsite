@@ -45,7 +45,7 @@ class Vopros(models.Model):
     author = models.ForeignKey(User, default='self', related_name='poster', on_delete=models.CASCADE)
     title = models.CharField(max_length=255, db_index=True, verbose_name='Наименование')
     content = RichTextUploadingField(blank=True, verbose_name='Описание')
-    image = models.ImageField(blank=True, upload_to='media/image/', null=True, verbose_name='Изображение')
+    image = models.ImageField(blank=True, upload_to='media/image/', null=True, verbose_name='Изображение задачи')
     image_1 = models.ImageField(blank=True, upload_to='media/image/', null=True, verbose_name='Изображение')
     varian_1 = models.CharField(max_length=255, db_index=True, verbose_name='Ответ №1')
     otvet_1 = models.BooleanField(default=False, verbose_name='Верный')
