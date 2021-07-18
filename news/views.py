@@ -3,7 +3,7 @@ from django.views.generic import ListView, DetailView
 from .models import Post, Category, Tag
 from django.db.models import F
 from django.template.defaulttags import register
-
+from .utils import create_comments_tree
 
 @register.filter
 def get_all_tag(value):
@@ -93,3 +93,8 @@ class GetPost(DetailView):
         self.object.save()
         # self.object.refresh_from_db()
         return context
+
+def base_view(request):
+    news = Post.objects.first().news.all()
+    result = create_comments_tree(news)
+    return render(request, 'news/comments.html', {'comment': result})

@@ -41,6 +41,7 @@ class Zadacha(models.Model):
 
 class Vopros(models.Model):
 
+    zadacha = models.ForeignKey(Zadacha, on_delete=models.CASCADE, related_name='voprosiki')
     author = models.ForeignKey(User, default='self', related_name='poster', on_delete=models.CASCADE)
     title = models.CharField(max_length=255, db_index=True, verbose_name='Наименование')
     content = RichTextUploadingField(blank=True, verbose_name='Описание')

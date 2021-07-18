@@ -1,0 +1,10 @@
+{% extends 'base/base.html' %}
+{% load static%}
+{% load mptt_tags %}
+
+
+{% block body %}
+
+    {{ comments|comments_filter }}
+
+{% endblock %}

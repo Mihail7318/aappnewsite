@@ -2,6 +2,9 @@ from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.urls import reverse
 from mptt.models import MPTTModel, TreeForeignKey
+from django.conf import settings
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.fields import GenericRelation
 
 class Category(MPTTModel):
 
@@ -49,6 +52,8 @@ class Tag(models.Model):
 
 class Post(models.Model):
 
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Автор', on_delete=models.CASCADE)
+
     STATUS_NEWS = (
         ('Publish', 'Опубликовать'),
         ('Not_to_publish', 'Не публиковать'),
@@ -65,6 +70,7 @@ class Post(models.Model):
     views = models.IntegerField(default=0, verbose_name='Количество просмотров')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     update_at = models.DateTimeField(auto_now=True, verbose_name='Дата обновления')
+    comments = GenericRelation('comment')
 
     def __str__(self):
         return self.title
@@ -76,3 +82,30 @@ class Post(models.Model):
         verbose_name = 'Статья(ю)'
         verbose_name_plural = 'Статьи'
         ordering = ['-created_at']
+
+
+class Comment(models.Model):
+
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Автор', on_delete=models.CASCADE)
+    text = models.TextField(verbose_name='текст коментария')
+    parent = models.ForeignKey(
+        'self',
+        verbose_name='родительский коментария',
+        blank=True,
+        null=True,
+        related_name='comment_children',
+        on_delete=models.CASCADE
+    )
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    timestamp = models.DateTimeField(auto_now=True, verbose_name='дата создание комментария')
+    is_child = models.BooleanField(default=False)
+
+    def __str__(self):
+        return str(self.id)
+
+    @property
+    def get_parent(self):
+        if not self.parent:
+            return ""
+        return self.parent
