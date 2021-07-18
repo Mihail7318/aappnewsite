@@ -12,3 +12,6 @@ class CustomUserisAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Customer)
+admin.site.register(Punkt)
+admin.site.register(School)
+admin.site.register(Klas)
