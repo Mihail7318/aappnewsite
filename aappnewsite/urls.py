@@ -25,6 +25,7 @@ urlpatterns += i18n_patterns(
     path('news/', include("news.urls")),
     #path('zayavki/', include("zayavki.urls")),
     path("", include("cust.urls")),
+    path("", include("comments.urls")),
 
     #path('cust/', include('cust.urls')),
     #path('smena/', include('smena.urls')),

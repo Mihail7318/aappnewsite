@@ -70,4 +70,3 @@ class TagAdmin(TranslationAdmin):
 
     get_image.short_description = 'минеатюра'
 
-admin.site.register(Comment)
