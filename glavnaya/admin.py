@@ -59,3 +59,14 @@ class SaidebarAdmin(admin.ModelAdmin):
             return False
         else:
             return True
+
+
+@admin.register(Footer)
+class FooterAdmin(admin.ModelAdmin):
+    save_on_top = True
+
+
+
+@admin.register(Menu)
+class MenuAdmin(admin.ModelAdmin):
+    save_on_top = True

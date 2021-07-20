@@ -80,3 +80,25 @@ class Saidebar(models.Model):
     class Meta:
         verbose_name = 'Сайдбар'
         verbose_name_plural = 'Сайдбар'
+
+
+class Footer(models.Model):
+    footer = models.CharField(max_length=255, verbose_name='Подвал')
+
+    def __int__(self):
+        return self.id
+
+    class Meta:
+        verbose_name = 'Подвал'
+        verbose_name_plural = 'Подвал'
+
+
+class Menu(models.Model):
+    menu = models.CharField(max_length=255, verbose_name='меню')
+
+    def __int__(self):
+        return self.id
+
+    class Meta:
+        verbose_name = 'меню'
+        verbose_name_plural = 'меню'

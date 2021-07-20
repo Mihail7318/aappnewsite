@@ -95,6 +95,6 @@ class GetPost(DetailView):
         return context
 
 def base_view(request):
-    comment = Post.objects.first().comment.all()
-    result = create_comments_tree(comment)
-    return render(request, 'news/comments.html', {'comment': result})
+    comments = Post.objects.first().comment.all()
+    result = create_comments_tree(comments)
+    return render(request, 'news/comments.html', {'comments': result})
