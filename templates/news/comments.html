@@ -2,9 +2,8 @@
 {% load static%}
 {% load comments_tree %}
 
-
 {% block body %}
-
-    {{ comments|comments_filter }}
+<p>Комментарии</p>
+    {{ comment|comments_filter }}
 
 {% endblock %}

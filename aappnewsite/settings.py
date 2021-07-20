@@ -47,8 +47,7 @@ INSTALLED_APPS = [
     'contact.apps.ContactConfig',
     'akaynt.apps.AkayntConfig',
     'taski.apps.TaskiConfig',
-    'comments.apps.CommentsConfig',
-    'posts',
+
     'crispy_forms',
     'phonenumber_field',
     'debug_toolbar',
