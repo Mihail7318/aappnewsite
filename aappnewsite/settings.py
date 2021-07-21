@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'contact.apps.ContactConfig',
     'akaynt.apps.AkayntConfig',
     'taski.apps.TaskiConfig',
-    'pages.apps.PagesConfig',
+    #'pages.apps.PagesConfig',
     'school.apps.SchoolConfig',
     'forum.apps.ForumConfig',
 

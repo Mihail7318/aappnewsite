@@ -18,6 +18,7 @@ urlpatterns = [
     path('', include("contact.urls")),
     path('', include("akaynt.urls")),
 
+
 ]
 
 urlpatterns += i18n_patterns(
